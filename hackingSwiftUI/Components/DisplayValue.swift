@@ -6,7 +6,7 @@ struct DisplayValue: View {
     var unit: UnitsTemperature
     
     init(value: Double, unit: UnitsTemperature, color: Color = .black) {
-        self.text = String(value)
+        self.text = String(format: "%.1f", value)
         self.color = color
         self.unit = unit
     }

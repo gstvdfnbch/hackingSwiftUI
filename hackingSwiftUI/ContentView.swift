@@ -18,7 +18,7 @@ struct ContentView: View {
                         .lineLimit(2)
                     
                     
-                    HStack(spacing: 16) {
+                    VStack(spacing: 16) {
                         DisplayValue(value: temperatureCelsius,
                                      unit: .celsius,
                                      color: .orange)
@@ -41,10 +41,23 @@ struct ContentView: View {
                                 .font(.title)
                                 .keyboardType(.decimalPad)
                                 .onChange(of: inputTemperature) { newValue in
-                                    if let result = Double(newValue) {
-                                        temperatureCelsius = result
+                                    let sanitizedInput = newValue.replacingOccurrences(of: ",", with: ".")
+                                    
+                                    let filtered = sanitizedInput.filter { "0123456789.".contains($0) }
+                                    
+                                    let decimalCount = filtered.filter { $0 == "." }.count
+                                    if decimalCount <= 1 && filtered.count <= 5 {
+                                        inputTemperature = filtered
+                                        
+                                        // Format as Double and assign to temperatureCelsius
+                                        if let result = Double(filtered) {
+                                            temperatureCelsius = result
+                                        } else {
+                                            temperatureCelsius = 0.0
+                                        }
                                     } else {
-                                        temperatureCelsius = 0.0
+                                        // Trim input if it exceeds 5 characters or has multiple decimals
+                                        inputTemperature = String(filtered.prefix(5))
                                     }
                                 }
                             
