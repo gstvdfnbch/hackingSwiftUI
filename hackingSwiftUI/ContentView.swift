@@ -7,10 +7,11 @@ struct ContentView: View {
     @State var resultTemperatura: Double = 0.0
     
     var body: some View {
-        ScrollView {
+        ZStack {
+            ScrollView {
                 VStack(spacing: 32) {
                     Spacer()
-
+                    
                     Text("Convert Celsius to Farehenheit")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -26,7 +27,7 @@ struct ContentView: View {
                                      unit: .farhenheit,
                                      color: .green)
                     }
-                                
+                    
                     VStack(spacing: 8.0) {
                         
                         HStack {
@@ -46,7 +47,7 @@ struct ContentView: View {
                                         temperatureCelsius = 0.0
                                     }
                                 }
-                        
+                            
                             Text("°C")
                                 .foregroundStyle(self.inputTemperature.isEmpty ? .black.opacity(0.2) : .gray)
                                 .font(.title3)
@@ -57,31 +58,36 @@ struct ContentView: View {
                                 .fill(.black.opacity(0.1))
                         }
                     }
-
+                    
                     Spacer()
-
-                    Button(action: {
-                        self.calculete()
-                    }) {
-                        HStack {
-                            Spacer()
-                            
-                            Text("Calculate")
-                                .disabled(inputTemperature.isEmpty)
-                                .foregroundStyle(.white)
-                                .padding(16)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                            
-                            Spacer()
-                        }
-                        .background(self.inputTemperature.isEmpty ? .gray : .blue)
-                        .cornerRadius(12)
-                    }
                 }
                 .multilineTextAlignment(.center)
-                .padding(16)
             }
+            
+            VStack {
+                Spacer()
+                
+                Button(action: {
+                    self.calculete()
+                }) {
+                    HStack {
+                        Spacer()
+                        
+                        Text("Calculate")
+                            .disabled(inputTemperature.isEmpty)
+                            .foregroundStyle(.white)
+                            .padding(16)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                    }
+                    .background(self.inputTemperature.isEmpty ? .gray : .blue)
+                    .cornerRadius(12)
+                }
+            }
+        }
+        .padding(16)
     }
     
     func calculete(){
