@@ -8,10 +8,31 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            
+            HStack {
+                HStack {
+                    Spacer()
+                    
+                    Text(self.inputTemperature)
+                    
+                    Spacer()
+                }
+                .background(.orange)
+                
+                
+                HStack {
+                    Spacer()
+                    
+                    Text(String(self.resultTemperatura))
+                    
+                    Spacer()
+
+                }
+                .background(.green)
+            }
+            .frame(height: 300.0)
+            
+            
             Text("Insert temperature:")
             
             TextField("Type temperature in Celsius", text: $inputTemperature)
