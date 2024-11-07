@@ -75,6 +75,8 @@ struct ContentView: View {
                     Spacer()
                 }
                 .multilineTextAlignment(.center)
+                .padding(.bottom, 32)
+                .scrollIndicators(.hidden)
             }
             
             VStack {
