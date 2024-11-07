@@ -38,7 +38,6 @@ struct DisplayValue: View {
         .frame(height: 120)
         .background(color)
         .cornerRadius(20)
-        .shadow(radius: 10)
     }
 }
 
