@@ -7,5 +7,5 @@ struct DisplayValue: View {
 }
 
 #Preview {
-    DisplayValue()
+    DisplayValue(value: 20)
 }
