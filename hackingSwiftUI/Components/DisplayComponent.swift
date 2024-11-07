@@ -1,10 +1,3 @@
-//
-//  DisplayComponent.swift
-//  hackingSwiftUI
-//
-//  Created by Gustavo Diefenbach on 07/11/24.
-//
-
 import SwiftUI
 
 struct DisplayComponent: View {

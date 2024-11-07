@@ -9,13 +9,15 @@ struct ContentView: View {
         NavigationView {
             ZStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 0) {
-                    ScrollView {
-                        VStack(alignment: .leading) {
-                            ForEach(self.list, id: \.self) { text in
-                                ItemNameList(name: text)
+                    ZStack {
+                        ScrollView {
+                            VStack(alignment: .leading) {
+                                ForEach(self.list, id: \.self) { text in
+                                    ItemNameList(name: text)
+                                }
                             }
+                            .padding()
                         }
-                        .padding()
                     }
                     
                     VStack(spacing: 12) {
@@ -43,10 +45,12 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                     }
+                    .padding(.top)
+                    .background(.gray.opacity(0.3))
                 }
             }
             .background(.gray.opacity(0.3))
-            .toolbarBackground(Color.white, for: .navigationBar)
+            .toolbarBackground(Color.gray.opacity(0.6), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .navigationTitle("Lista de palavras")
         }
