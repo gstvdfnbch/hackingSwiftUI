@@ -35,7 +35,7 @@ struct DisplayValue: View {
             
             Spacer()
         }
-        .frame(height: 150)
+        .frame(height: 120)
         .background(color)
         .cornerRadius(20)
         .shadow(radius: 10)
