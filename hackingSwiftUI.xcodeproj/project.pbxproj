@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7B5DFF362CDCD725003255F5 /* Build configuration list for PBXProject "hackingSwiftUI" */;
+			buildConfigurationList = 7B5DFF362CDCD725003255F5 /* Build configuration list for PBXProject "HackingSwiftUI" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -307,7 +307,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B5DFF362CDCD725003255F5 /* Build configuration list for PBXProject "hackingSwiftUI" */ = {
+		7B5DFF362CDCD725003255F5 /* Build configuration list for PBXProject "HackingSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B5DFF472CDCD727003255F5 /* Debug */,

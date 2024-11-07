@@ -1,13 +1,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var inputTemperature: String = "0.0"
+    @State var inputTemperature: String = ""
     
     @State var temperatureCelsius: Double = 0.0 //Celsius
     @State var resultTemperatura: Double = 0.0
     
     var body: some View {
         VStack(spacing: 32) {
+            Spacer()
+
+            Text("Convert Celsius to Farehenheit")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Spacer()
             
             HStack(spacing: 16) {
                 DisplayValue(value: temperatureCelsius, unit: .celsius, color: .orange)
@@ -22,27 +29,18 @@ struct ContentView: View {
                 }
                 
                 HStack{
-                    TextField("Type temperature in Celsius", text: $inputTemperature)
+                    TextField("Temperature in Celsius", text: $inputTemperature)
                         .foregroundStyle(.black)
                         .font(.title)
+                        .keyboardType(.decimalPad)
                         .onChange(of: inputTemperature) { newValue in
-                            let filtered = newValue.filter { "0123456789.".contains($0) }
-                            
-                            // Prevent more than one decimal point
-                            let decimalCount = filtered.filter { $0 == "." }.count
-                            if decimalCount > 1 {
-                                inputTemperature = String(filtered.dropLast())
-                            } else {
-                                inputTemperature = filtered
-                            }
-                            
-                            if let result = Double(inputTemperature) {
+                            if let result = Double(newValue) {
                                 temperatureCelsius = result
                             } else {
                                 temperatureCelsius = 0.0
                             }
                         }
-                    
+                
                     Text("°C")
                         .foregroundStyle(.black)
                         .font(.title3)
@@ -72,10 +70,13 @@ struct ContentView: View {
                 .background(.blue)
                 .cornerRadius(12)
             }
-            .disabled(!self.inputTemperature.isEmpty)
+            .disabled(self.inputTemperature.isEmpty)
         }
         .multilineTextAlignment(.center)
         .padding(16)
+
+        Spacer()
+
     }
     
     func calculete(){
